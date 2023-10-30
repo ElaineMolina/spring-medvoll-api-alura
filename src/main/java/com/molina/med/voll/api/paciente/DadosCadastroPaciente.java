@@ -1,4 +1,4 @@
-package com.molina.med.voll.api.pacientes;
+package com.molina.med.voll.api.paciente;
 
 import com.molina.med.voll.api.endereco.DadosEndereco;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.molina.med.voll.api.pacientes;
+package com.molina.med.voll.api.paciente;
 
 import com.molina.med.voll.api.endereco.Endereco;
 import jakarta.persistence.*;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Paciente")
+@Entity(name = "Pacientes")
 @Table(name = "pacientes")
 public class Paciente {
 

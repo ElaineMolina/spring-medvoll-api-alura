@@ -1,4 +1,4 @@
-package com.molina.med.voll.api.pacientes;
+package com.molina.med.voll.api.paciente;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
