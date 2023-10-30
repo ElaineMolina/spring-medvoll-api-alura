@@ -1,6 +1,7 @@
 package com.molina.med.voll.api.medico;
 
 public record DadosListagemMedicos(
+        Long id,
         String nome,
         String email,
         String crm,
@@ -8,7 +9,8 @@ public record DadosListagemMedicos(
 
 
     public DadosListagemMedicos(Medico medico){
-        this(medico.getNome(),
+        this(medico.getId(),
+                medico.getNome(),
                 medico.getEmail(),
                 medico.getCrm(),
                 medico.getEspecialidade());
