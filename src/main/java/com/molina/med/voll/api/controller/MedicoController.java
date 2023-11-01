@@ -1,6 +1,6 @@
 package com.molina.med.voll.api.controller;
 
-import com.molina.med.voll.api.medico.*;
+import com.molina.med.voll.api.domain.medico.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +20,12 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrarMedico(@RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriBuilder) {
         var medico = new Medico(dados);
         medicoRepository.save(medico);
 
-        var uri = uriComponentsBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
+        var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
+
         return ResponseEntity.created(uri).body(new DetalhamentoAtualizadoMedico(medico));
     }
 

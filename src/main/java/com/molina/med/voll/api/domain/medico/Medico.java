@@ -1,54 +1,58 @@
-package com.molina.med.voll.api.paciente;
+package com.molina.med.voll.api.domain.medico;
 
-import com.molina.med.voll.api.endereco.Endereco;
+import com.molina.med.voll.api.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Table(name = "medicos")
+@Entity(name = "Medico")
 @Getter
-@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Pacientes")
-@Table(name = "pacientes")
-public class Paciente {
+@EqualsAndHashCode(of = "id")
+public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
     private String email;
-    private String cpf;
     private String telefone;
+    private String crm;
     private Boolean ativo;
+
+    @Enumerated(EnumType.STRING)
+    private Especialidade especialidade;
 
     @Embedded
     private Endereco endereco;
 
-    public Paciente(DadosCadastroPaciente dados) {
+    public Medico(DadosCadastroMedico dados) {
         this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
-        this.cpf = dados.cpf();
+        this.crm = dados.crm();
+        this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
     }
 
-    public void atualizarInformacoes(DadosAtualizarPaciente dados) {
-        if (dados.nome() != null)
+    public void atualizarInformacoes(DadosAtualizarMedico dados) {
+        if (dados.nome() != null) {
             this.nome = dados.nome();
-
-        if (dados.telefone() != null)
+        }
+        if (dados.telefone() != null) {
             this.telefone = dados.telefone();
-
-        if (dados.endereco() != null)
-            endereco.atualizarInformacoesEndereco(dados.endereco());
+        }
+        if (dados.endereco() != null) {
+            this.endereco.atualizarInformacoesEndereco(dados.endereco());
+        }
     }
 
-    public void excluirPaciente() {
+    public void excluir() {
         this.ativo = false;
     }
 }

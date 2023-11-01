@@ -1,4 +1,4 @@
-package com.molina.med.voll.api.endereco;
+package com.molina.med.voll.api.domain.endereco;
 
 
 import jakarta.persistence.Embeddable;

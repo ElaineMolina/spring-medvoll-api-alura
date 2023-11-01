@@ -1,4 +1,4 @@
-package com.molina.med.voll.api.paciente;
+package com.molina.med.voll.api.domain.paciente;
 
 import jakarta.validation.constraints.NotNull;
 

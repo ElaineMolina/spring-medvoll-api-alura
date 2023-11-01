@@ -1,8 +1,6 @@
 package com.molina.med.voll.api.controller;
 
-import com.molina.med.voll.api.medico.DadosAtualizarMedico;
-import com.molina.med.voll.api.medico.DetalhamentoAtualizadoMedico;
-import com.molina.med.voll.api.paciente.*;
+import com.molina.med.voll.api.domain.paciente.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
