@@ -1,6 +1,5 @@
 package com.molina.med.voll.api.controller;
 
-import com.molina.med.voll.api.medico.DadosAtualizarMedico;
 import com.molina.med.voll.api.paciente.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -33,5 +32,12 @@ public class PacientesController {
     public void atualizarPacientes (@RequestBody @Valid DadosAtualizarPaciente dados){
         var paciente = pacienteRepository.getReferenceById(dados.id());
         paciente.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void exlcuirPaciente(@PathVariable  Long id) {
+        var paciente = pacienteRepository.getReferenceById(id);
+        paciente.excluir();
     }
 }
